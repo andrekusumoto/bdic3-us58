@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateOperadoraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateOperadoraLabel_opeCodigo}" for="opeCodigo" />
+                    <h:inputText id="opeCodigo" value="#{operadoraController.selected.opeCodigo}" title="#{bundle.CreateOperadoraTitle_opeCodigo}" required="true" requiredMessage="#{bundle.CreateOperadoraRequiredMessage_opeCodigo}"/>
+                    <h:outputLabel value="#{bundle.CreateOperadoraLabel_opeDescricao}" for="opeDescricao" />
+                    <h:inputText id="opeDescricao" value="#{operadoraController.selected.opeDescricao}" title="#{bundle.CreateOperadoraTitle_opeDescricao}" required="true" requiredMessage="#{bundle.CreateOperadoraRequiredMessage_opeDescricao}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{operadoraController.create}" value="#{bundle.CreateOperadoraSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{operadoraController.prepareList}" value="#{bundle.CreateOperadoraShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateOperadoraIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

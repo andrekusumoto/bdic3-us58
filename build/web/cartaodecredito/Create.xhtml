@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCartaodecreditoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCartaodecreditoLabel_cdcNumero}" for="cdcNumero" />
+                    <h:inputText id="cdcNumero" value="#{cartaodecreditoController.selected.cdcNumero}" title="#{bundle.CreateCartaodecreditoTitle_cdcNumero}" required="true" requiredMessage="#{bundle.CreateCartaodecreditoRequiredMessage_cdcNumero}"/>
+                    <h:outputLabel value="#{bundle.CreateCartaodecreditoLabel_cdcCodigoseguranca}" for="cdcCodigoseguranca" />
+                    <h:inputText id="cdcCodigoseguranca" value="#{cartaodecreditoController.selected.cdcCodigoseguranca}" title="#{bundle.CreateCartaodecreditoTitle_cdcCodigoseguranca}" required="true" requiredMessage="#{bundle.CreateCartaodecreditoRequiredMessage_cdcCodigoseguranca}"/>
+                    <h:outputLabel value="#{bundle.CreateCartaodecreditoLabel_cdcDatavalidade}" for="cdcDatavalidade" />
+                    <h:inputText id="cdcDatavalidade" value="#{cartaodecreditoController.selected.cdcDatavalidade}" title="#{bundle.CreateCartaodecreditoTitle_cdcDatavalidade}" required="true" requiredMessage="#{bundle.CreateCartaodecreditoRequiredMessage_cdcDatavalidade}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateCartaodecreditoLabel_cdcNomenocartao}" for="cdcNomenocartao" />
+                    <h:inputText id="cdcNomenocartao" value="#{cartaodecreditoController.selected.cdcNomenocartao}" title="#{bundle.CreateCartaodecreditoTitle_cdcNomenocartao}" required="true" requiredMessage="#{bundle.CreateCartaodecreditoRequiredMessage_cdcNomenocartao}"/>
+                    <h:outputLabel value="#{bundle.CreateCartaodecreditoLabel_cliCpf}" for="cliCpf" />
+                    <h:selectOneMenu id="cliCpf" value="#{cartaodecreditoController.selected.cliCpf}" title="#{bundle.CreateCartaodecreditoTitle_cliCpf}" required="true" requiredMessage="#{bundle.CreateCartaodecreditoRequiredMessage_cliCpf}">
+                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCartaodecreditoLabel_opeCodigo}" for="opeCodigo" />
+                    <h:selectOneMenu id="opeCodigo" value="#{cartaodecreditoController.selected.opeCodigo}" title="#{bundle.CreateCartaodecreditoTitle_opeCodigo}" required="true" requiredMessage="#{bundle.CreateCartaodecreditoRequiredMessage_opeCodigo}">
+                        <f:selectItems value="#{operadoraController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cartaodecreditoController.create}" value="#{bundle.CreateCartaodecreditoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{cartaodecreditoController.prepareList}" value="#{bundle.CreateCartaodecreditoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCartaodecreditoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

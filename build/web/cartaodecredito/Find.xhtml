@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.FindCartaodecreditoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCartaodecreditoEmpty}" rendered="#{cartaodecreditoController.items.rowCount == 0}"/>
+                
+                
+                <h:panelGroup rendered="#{cartaodecreditoController.items.rowCount > 0}">
+                    <h:outputText value="#{cartaodecreditoController.pagination.pageFirstItem + 1}..#{cartaodecreditoController.pagination.pageLastItem + 1}/#{cartaodecreditoController.pagination.itemsCount}" rendered="#{cartaodecreditoController.pagination.hasNextPage}" />&nbsp;
+                    <h:commandLink action="#{cartaodecreditoController.previous}" value="#{bundle.Previous} #{cartaodecreditoController.pagination.pageSize}" rendered="#{cartaodecreditoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{cartaodecreditoController.next}" value="#{bundle.Next} #{cartaodecreditoController.pagination.pageSize}" rendered="#{cartaodecreditoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{cartaodecreditoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px" >
+                        <h:column>
+                            <f:facet name="header">                                
+                                <h:outputText value="#{bundle.ListCartaodecreditoTitle_cdcNumero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cdcNumero}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCartaodecreditoTitle_cdcCodigoseguranca}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cdcCodigoseguranca}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCartaodecreditoTitle_cdcDatavalidade}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cdcDatavalidade}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCartaodecreditoTitle_cdcNomenocartao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cdcNomenocartao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCartaodecreditoTitle_cliCpf}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cliCpf}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCartaodecreditoTitle_opeCodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.opeCodigo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{cartaodecreditoController.prepareView}" value="#{bundle.ListCartaodecreditoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cartaodecreditoController.prepareEdit}" value="#{bundle.ListCartaodecreditoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cartaodecreditoController.destroy}" value="#{bundle.ListCartaodecreditoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{cartaodecreditoController.prepareCreate}" value="#{bundle.ListCartaodecreditoCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink  action="#{cartaodecreditoController.prepareList}" value="#{bundle.ListCartaodecreditoTitle}"/>
+                <!--<h:link outcome="/index" value="#{bundle.ListCartaodecreditoIndexLink}"/>-->
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

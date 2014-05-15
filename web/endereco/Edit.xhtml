@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEnderecoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEnderecoLabel_endCodigo}" for="endCodigo" />
+                    <h:inputText id="endCodigo" value="#{enderecoController.selected.endCodigo}" title="#{bundle.EditEnderecoTitle_endCodigo}" required="true" requiredMessage="#{bundle.EditEnderecoRequiredMessage_endCodigo}"/>
+                    <h:outputLabel value="#{bundle.EditEnderecoLabel_endLogradouro}" for="endLogradouro" />
+                    <h:inputText id="endLogradouro" value="#{enderecoController.selected.endLogradouro}" title="#{bundle.EditEnderecoTitle_endLogradouro}" required="true" requiredMessage="#{bundle.EditEnderecoRequiredMessage_endLogradouro}"/>
+                    <h:outputLabel value="#{bundle.EditEnderecoLabel_endNumero}" for="endNumero" />
+                    <h:inputText id="endNumero" value="#{enderecoController.selected.endNumero}" title="#{bundle.EditEnderecoTitle_endNumero}" />
+                    <h:outputLabel value="#{bundle.EditEnderecoLabel_endBairro}" for="endBairro" />
+                    <h:inputText id="endBairro" value="#{enderecoController.selected.endBairro}" title="#{bundle.EditEnderecoTitle_endBairro}" />
+                    <h:outputLabel value="#{bundle.EditEnderecoLabel_endComplemento}" for="endComplemento" />
+                    <h:inputText id="endComplemento" value="#{enderecoController.selected.endComplemento}" title="#{bundle.EditEnderecoTitle_endComplemento}" />
+                    <h:outputLabel value="#{bundle.EditEnderecoLabel_endCep}" for="endCep" />
+                    <h:inputText id="endCep" value="#{enderecoController.selected.endCep}" title="#{bundle.EditEnderecoTitle_endCep}" required="true" requiredMessage="#{bundle.EditEnderecoRequiredMessage_endCep}"/>
+                    <h:outputLabel value="#{bundle.EditEnderecoLabel_endLatitude}" for="endLatitude" />
+                    <h:inputText id="endLatitude" value="#{enderecoController.selected.endLatitude}" title="#{bundle.EditEnderecoTitle_endLatitude}" required="true" requiredMessage="#{bundle.EditEnderecoRequiredMessage_endLatitude}"/>
+                    <h:outputLabel value="#{bundle.EditEnderecoLabel_endLongitude}" for="endLongitude" />
+                    <h:inputText id="endLongitude" value="#{enderecoController.selected.endLongitude}" title="#{bundle.EditEnderecoTitle_endLongitude}" required="true" requiredMessage="#{bundle.EditEnderecoRequiredMessage_endLongitude}"/>
+                    <h:outputLabel value="#{bundle.EditEnderecoLabel_cidCodigo}" for="cidCodigo" />
+                    <h:selectOneMenu id="cidCodigo" value="#{enderecoController.selected.cidCodigo}" title="#{bundle.EditEnderecoTitle_cidCodigo}" required="true" requiredMessage="#{bundle.EditEnderecoRequiredMessage_cidCodigo}">
+                        <f:selectItems value="#{cidadeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEnderecoLabel_cliCpf}" for="cliCpf" />
+                    <h:selectOneMenu id="cliCpf" value="#{enderecoController.selected.cliCpf}" title="#{bundle.EditEnderecoTitle_cliCpf}" required="true" requiredMessage="#{bundle.EditEnderecoRequiredMessage_cliCpf}">
+                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{enderecoController.update}" value="#{bundle.EditEnderecoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEnderecoViewLink}"/>
+                <br />
+                <h:commandLink action="#{enderecoController.prepareList}" value="#{bundle.EditEnderecoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEnderecoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

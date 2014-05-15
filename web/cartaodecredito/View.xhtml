@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCartaodecreditoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCartaodecreditoLabel_cdcNumero}"/>
+                    <h:outputText value="#{cartaodecreditoController.selected.cdcNumero}" title="#{bundle.ViewCartaodecreditoTitle_cdcNumero}"/>
+                    <h:outputText value="#{bundle.ViewCartaodecreditoLabel_cdcCodigoseguranca}"/>
+                    <h:outputText value="#{cartaodecreditoController.selected.cdcCodigoseguranca}" title="#{bundle.ViewCartaodecreditoTitle_cdcCodigoseguranca}"/>
+                    <h:outputText value="#{bundle.ViewCartaodecreditoLabel_cdcDatavalidade}"/>
+                    <h:outputText value="#{cartaodecreditoController.selected.cdcDatavalidade}" title="#{bundle.ViewCartaodecreditoTitle_cdcDatavalidade}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCartaodecreditoLabel_cdcNomenocartao}"/>
+                    <h:outputText value="#{cartaodecreditoController.selected.cdcNomenocartao}" title="#{bundle.ViewCartaodecreditoTitle_cdcNomenocartao}"/>
+                    <h:outputText value="#{bundle.ViewCartaodecreditoLabel_cliCpf}"/>
+                    <h:outputText value="#{cartaodecreditoController.selected.cliCpf}" title="#{bundle.ViewCartaodecreditoTitle_cliCpf}"/>
+                    <h:outputText value="#{bundle.ViewCartaodecreditoLabel_opeCodigo}"/>
+                    <h:outputText value="#{cartaodecreditoController.selected.opeCodigo}" title="#{bundle.ViewCartaodecreditoTitle_opeCodigo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cartaodecreditoController.destroyAndView}" value="#{bundle.ViewCartaodecreditoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCartaodecreditoEditLink}"/>
+                <br />
+                <h:commandLink action="#{cartaodecreditoController.prepareCreate}" value="#{bundle.ViewCartaodecreditoCreateLink}" />
+                <br />
+                <h:commandLink action="#{cartaodecreditoController.prepareList}" value="#{bundle.ViewCartaodecreditoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCartaodecreditoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

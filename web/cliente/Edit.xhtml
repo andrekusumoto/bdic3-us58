@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditClienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditClienteLabel_cliCpf}" for="cliCpf" />
+                    <h:inputText id="cliCpf" value="#{clienteController.selected.cliCpf}" title="#{bundle.EditClienteTitle_cliCpf}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_cliCpf}"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_cliNome}" for="cliNome" />
+                    <h:inputText id="cliNome" value="#{clienteController.selected.cliNome}" title="#{bundle.EditClienteTitle_cliNome}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_cliNome}"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_cliDatanascimento}" for="cliDatanascimento" />
+                    <h:inputText id="cliDatanascimento" value="#{clienteController.selected.cliDatanascimento}" title="#{bundle.EditClienteTitle_cliDatanascimento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_cliEmail}" for="cliEmail" />
+                    <h:inputText id="cliEmail" value="#{clienteController.selected.cliEmail}" title="#{bundle.EditClienteTitle_cliEmail}" />
+                    <h:outputLabel value="#{bundle.EditClienteLabel_cliSenha}" for="cliSenha" />
+                    <h:inputText id="cliSenha" value="#{clienteController.selected.cliSenha}" title="#{bundle.EditClienteTitle_cliSenha}" />
+                </h:panelGrid>
+                <h:commandLink action="#{clienteController.update}" value="#{bundle.EditClienteSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditClienteViewLink}"/>
+                <br />
+                <h:commandLink action="#{clienteController.prepareList}" value="#{bundle.EditClienteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditClienteIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
